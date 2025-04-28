@@ -15,19 +15,28 @@ export default async function UsersPage() {
   const users: User[] = await data.json();
   return (
     <>
-      <h1>Users</h1>
+      <h1 className="text-6xl">Users</h1>
       {/*Time stamp on works in Dev mode, not in production because NextJS sees this as a static page.
       
       when using the fetch function NextJS will cache the data. So it treats data as static or unchanging data.*/}
       <p>{new Date().toLocaleTimeString()}</p>
-      <ul>
-        {users.map((users) => (
-          <li key={users.id} className="p-3">
-            name: {users.name} <br />
-            username: {users.username} <br />
-          </li>
-        ))}
-      </ul>
+
+      <table data-theme="coffee" className="table table-bordered">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+        <tbody>
+          {users.map((user) => (
+            <tr key={user.id} className="p-3">
+              <td> {user.name}</td>
+              <td> {user.username}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 }

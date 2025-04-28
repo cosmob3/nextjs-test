@@ -11,7 +11,7 @@ export default async function UsersPage() {
   const users: User[] = await data.json();
   return (
     <>
-      <h1>Users</h1>
+      <h1 className="text-6xl">Users</h1>
       <p>{new Date().toLocaleTimeString()}</p>
       <br />
       <ul>
